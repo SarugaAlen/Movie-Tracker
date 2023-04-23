@@ -9,7 +9,7 @@
     let result = null
 
     async function ShraniVBazo() {
-        const res = await fetch("http://127.0.0.1:8000/Filmi/Dodaj", {
+        const res = await fetch("http://127.0.0.1:8000/Film", {
 			method: 'POST',
 			headers: {
     		"Content-type": "application/json; charset=UTF-8"
@@ -31,7 +31,6 @@
 
 </script>
 
-
 <h1>
     Dodaj datoteko
 </h1>
@@ -50,11 +49,24 @@
 
 <label for="Naslov">Vnesi naslov filma:</label>
 <input name="Naslov" type="text" bind:value={naslov} />
-<label for="Trajanje">Vnesi naslov filma:</label>
-<input name="Trajanje" type="number" bind:value={trajanje} />
+
+<label for="Leto">Vnesi leto izida filma:</label>
+<input name="Leto" type="number" bind:value={leto} />
+
+<label for="Trajanje">Vnesi trajanje filma:</label>
+<input name="Trajanje" type="string" bind:value={trajanje} />
+
+<label for="Reziser">Vnesi reziserja filma:</label>
+<input name="Reziser" type="text" bind:value={reziser} />
+
+<label for="Ocena">Vnesi oceno filma:</label>
+<input name="Ocena" type="number" bind:value={ocena} />
+
+<label for="Image">Vnesi URL slike filma:</label>
+<input name="Image" type="text" bind:value={img_url} />
+
 <label for="Ogledan">Ogledan?</label>
 <input name="Ogledan" type="checkbox" bind:checked={ogledan} />
-
 
 
 
