@@ -4,6 +4,7 @@
 	let leto = ""
 	let ocena = 0
     let trajanje = 0
+	let img_url = ""
     let ogledan = true
     let result = null
 
@@ -19,6 +20,7 @@
 				Trajanje : trajanje,
 				Reziser : reziser,
 				Ocena : ocena,
+				Image : img_url,
 				Ogledan : ogledan
 			}),
 		})
@@ -59,6 +61,9 @@
 
 <label for="Ocena">Vnesi oceno filma:</label>
 <input name="Ocena" type="number" bind:value={ocena} />
+
+<label for="Image">Vnesi URL slike filma:</label>
+<input name="Image" type="text" bind:value={img_url} />
 
 <label for="Ogledan">Ogledan?</label>
 <input name="Ogledan" type="checkbox" bind:checked={ogledan} />
