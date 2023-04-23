@@ -3,8 +3,6 @@
     let ID = 0
     let ogledan = "true"
     let result = null
-
-    let povezavaDodaj = 'http://127.0.0.1:8000/Film/${ID}/Izbrisi'
     	
     //Poglej kako se delajo api klici s tem fetchom 
    //async function ShraniVBazo() {
@@ -25,7 +23,7 @@
 
     async function Izbrisi() {
 		
-		let povezava = "http://127.0.0.1:8000/Film/" + ID + "/Izbrisi"
+		let povezava = "http://127.0.0.1:8000/Film/" + ID
         const res = await fetch(povezava, {
 			method: 'DELETE',
 		})
