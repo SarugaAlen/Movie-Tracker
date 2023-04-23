@@ -3,8 +3,6 @@
     let ID = 0
     let ogledan = "true"
     let result = null
-
-    let povezavaDodaj = 'http://127.0.0.1:8000/Film/${ID}/Izbrisi'
     	
 
     async function IzbrisiID() {
@@ -17,7 +15,7 @@
 
 	async function IzbrisiNaslov() {
 		
-		let povezava = "http://127.0.0.1:8000/Film/" + ID + "/Izbrisi"
+		let povezava = "http://127.0.0.1:8000/Film/" + ID
         const res = await fetch(povezava, {
 			method: 'DELETE',
 		})
