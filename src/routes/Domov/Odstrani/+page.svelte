@@ -4,7 +4,7 @@
     let ogledan = "true"
     let result = null
 
-    let povezavaDodaj = "http://127.0.0.1:8000/Filmi/Dodaj"
+    let povezavaDodaj = 'http://127.0.0.1:8000/Film/${ID}/Izbrisi'
     	
     //Poglej kako se delajo api klici s tem fetchom 
    //async function ShraniVBazo() {
@@ -21,21 +21,19 @@
 	//	result = JSON.stringify(json)
 	//}
 
-    async function Izbrisi() {
-        const res = await fetch(povezavaDodaj, {
-			method: 'DELETE',
-			body: JSON.stringify({
-				naslov
-			})
-		})
 
-		const json = await res.json()
-		result = JSON.stringify(json)
+
+    async function Izbrisi() {
+		
+		let povezava = "http://127.0.0.1:8000/Film/" + ID + "/Izbrisi"
+        const res = await fetch(povezava, {
+			method: 'DELETE',
+		})
 	}
 
 
-</script>
 
+</script>
 
 <h1>
     Odstrani datoteko
@@ -44,13 +42,13 @@
 <p>Tukaj izberi, kateri film bo izbrisan</p>
 
 
-
-
 <label for="Naslov">Vnesi naslov filma:</label>
 <input name="Naslov" type="text" bind:value={naslov} />
 <p>Ali pa vnesi ID:</p>
-<input name="Trajanje" type="number" bind:value={ID} />
+<input type="text" bind:value={ID} />
 
-<button on:click={Izbrisi}>Shrani v bazo!</button>
+<button on:click={Izbrisi}>Izbrisi!</button>
 
 <p>{result}</p>
+
+

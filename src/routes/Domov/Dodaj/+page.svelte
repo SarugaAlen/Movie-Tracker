@@ -3,44 +3,25 @@
     let trajanje = 0
     let ogledan = true
     let result = null
-    let json = null
-
-    	
-    //Poglej kako se delajo api klici s tem fetchom 
-   //async function ShraniVBazo() {
-   //    const res = await fetch('https://httpbin.org/post', {
-	//		method: 'POST',
-	//		body: JSON.stringify({
-	//			naslov,
-	//			trajanje,
-   //            ogledan
-	//		})
-	//	})
-
-	//	const json = await res.json()
-	//	result = JSON.stringify(json)
-	//}
 
     async function ShraniVBazo() {
         const res = await fetch("http://127.0.0.1:8000/Filmi/Dodaj", {
 			method: 'POST',
 			headers: {
-    		'content-type': 'application/json'
-  			},
+    		"Content-type": "application/json; charset=UTF-8"
+ 			 },
 			body: JSON.stringify({
-				naslov,
-				trajanje,
-				ogledan
-			})
+				Naslov : naslov,
+				Trajanje : trajanje,
+				Ogledan : ogledan
+			}),
 		})
-
 		const json = await res.json()
 		result = JSON.stringify(json)
+		console.log(result)
 	}
 
-
 </script>
-
 
 <h1>
     Dodaj datoteko
@@ -66,6 +47,7 @@
 <input name="Ogledan" type="checkbox" bind:checked={ogledan} />
 
 
-<button on:click={ShraniVBazo}>Shrani v bazo!</button>
+<button on:click|preventDefault={ShraniVBazo}>Shrani v bazo!</button>
 
 <p>{result}</p>
+
