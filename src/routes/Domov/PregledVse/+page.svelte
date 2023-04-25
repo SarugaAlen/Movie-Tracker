@@ -1,5 +1,7 @@
 
 <script>
+	import Card from "$lib/Card.svelte";
+
     let naslov = "Zdravo"
     let ID = 0
     let ogledan = "true"
@@ -53,7 +55,7 @@
 </script>
 
 
-<h1>
+<h1 class=" m-5 text-center text-4xl">
     Pregled vseh datotek
 </h1>
 
@@ -72,20 +74,35 @@
 	<p style="color: red">{error.message}</p>
 {/await}
 
--->
+<p> ID: {JSON.stringify(item._id)}, Naslov: , Trajanje: {item.trajanje} minut</p>
+
+
+
 
 {#each data.json as item (item._id) }
-		<p>Naslov filma: {item.Naslov}</p>
-		<p>Trajanje filma: {item.Trajanje} minut</p>
-		<p>Leto izvajanja: {item.Leto}</p>
-		<p>Reziser: {item.Reziser}</p>
-		<p>Ocena: {item.Ocena}</p>
-		<img height = "400" width="400" src={item.Image} alt="Fotografija"/>
-		<p>Ogledan: {item.Ogledan}</p>
-
-
-		<p> ID: {JSON.stringify(item._id)}, Naslov: , Trajanje: {item.trajanje} minut</p>
+	<Card>
+			<p> ID: {JSON.stringify(item._id)}</p>
+			<p>Naslov filma: {item.Naslov}</p>
+			<p>Trajanje filma: {item.Trajanje} minut</p>
+			<p>Leto izvajanja: {item.Leto}</p>
+			<p>Reziser: {item.Reziser}</p>
+			<p>Ocena: {item.Ocena}</p>
+			<p>Ogledan: {item.Ogledan}</p>	
+			<img height = "400" width="400" src={item.Image} alt="Fotografija"/>
+	</Card>
 {/each}
+
+
+-->
+
+<!--Spraed operator-->
+<div class="p-10 flex flex-wrap gap-6">
+	{#each data.json as item (item._id) }
+		<Card {...item}>
+		</Card>
+	{/each}
+</div>
+
 
 
 
