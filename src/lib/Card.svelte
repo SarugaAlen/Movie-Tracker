@@ -1,46 +1,63 @@
 <script>
-    export let _id
-    export let Naslov
-    export let Trajanje
-    export let Leto
-    export let Reziser
-    export let Ocena
-    export let Ogledan
-    export let Image
+	import { createEventDispatcher } from 'svelte';
+	import { blur } from 'svelte/transition';
+
+	export let _id;
+	export let Naslov;
+	export let Trajanje;
+	export let Leto;
+	export let Reziser;
+	export let Ocena;
+	export let Ogledan;
+	export let Image;
+
+	const dispatch = createEventDispatcher();
+
+	function spremeniStanje() {
+		dispatch('sprememba', {
+			id: _id,
+			ogledan: Ogledan
+		});
+	}
+
+	function izbrisiCard() {
+		dispatch('izbris', {
+			id: _id
+		});
+	}
 </script>
 
+<div transition:blur class="max-w-sm overflow-hidden rounded-xl shadow-lg">
+	<img class="max-h-40 max-w-xs" src={Image} alt="Sunset in the mountains" />
+	<div class="px-6 py-6">
+		<p class="mb-2 text-2xl font-bold {Ogledan == true ? 'text-green-600' : 'text-red-400'} ">
+			{Naslov}
+		</p>
+		<p class="text-gray-700">Trajanje filma: {Trajanje} minut</p>
+		<p class="text-gray-700">Leto izvajanja: {Leto}</p>
+		<p class="text-gray-700">Reziser: {Reziser}</p>
+		<p class="text-gray-700">Ocena: {Ocena}</p>
 
-<!--
-    Poskusna faza
+		<div class="flex flex-row gap-3 items-center">
+			{#if Ogledan == true}
+				<button
+					on:click={spremeniStanje}
+					class="my-5 w-28 self-center rounded bg-green-500 px-5 py-3 text-sm font-bold text-white hover:bg-green-700"
+					>Ogledan</button
+				>
+			{:else}
+				<button
+					on:click={spremeniStanje}
+					class="my-5 w-28 self-center rounded bg-red-500 px-5 py-3 text-sm font-bold text-white hover:bg-red-700"
+					>Neogledan</button
+				>
+			{/if}
 
-    <div class="shadow-xl rounded-md ml-20 p-20">
-    <div class="flex flex-row items-center justify-around">
-        <img height = "200" width="200" src={Image} alt="Fotografija"/>
-        <div class="flex flex-col items-center">
-            <p class="text-4xl">Naslov filma: {Naslov}</p>
-            <p class="text-xl">Trajanje filma: {Trajanje} minut</p>
-            <p class="text-xl">Leto izvajanja: {Leto}</p>
-            <p class="text-xl">Reziser: {Reziser}</p>
-            <p class="text-xl">Ocena: {Ocena}</p>
-            <p>Ogledan: {Ogledan}</p>
-        </div>
-        
-             <div class=" p-3 flex">
-            <p> ID: {JSON.stringify(_id)}</p>
-        </div>
-         
-    </div>		
+			<button
+				on:click={izbrisiCard}
+				class="my-5 w-28 self-center rounded bg-red-500 p-3 text-sm font-bold text-white hover:bg-red-700"
+				>Izbrisi</button
+			>
+		</div>
+	</div>
 </div>
--->
-
-
-<div class="max-w-sm rounded-xl overflow-hidden shadow-lg">
-    <img class="max-h-64 max-w-xs" src={Image} alt="Sunset in the mountains">
-    <div class="px-6 py-6">
-      <p class="font-bold text-2xl mb-2 {Ogledan == true ? "text-green-600" : "text-red-400"} ">{Naslov}</p>
-      <p class="text-gray-700">Trajanje filma: {Trajanje} minut</p>
-      <p class="text-gray-700">Leto izvajanja: {Leto}</p>
-      <p class="text-gray-700">Reziser: {Reziser}</p>
-      <p class="text-gray-700">Ocena: {Ocena}</p>
-    </div>
-  </div>
