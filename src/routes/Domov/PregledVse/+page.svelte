@@ -1,65 +1,55 @@
-
 <script>
-	import Card from "$lib/Card.svelte";
-
-    let naslov = "Zdravo"
-    let ID = 0
-    let ogledan = "true"
-    let result = null
-	let json = null
-
-
-	// Delujoča
-	///let promise = ShraniVBazo()
-
-	///async function ShraniVBazo() {
-    /////const res = await fetch("http://127.0.0.1:8000/Filmi")
-	///const res = await fetch("http://127.0.0.1:8000/Filmi")
-	///const json = await res.json()
-	///console.log(json)
-	///
-	///if (res.ok) {
-	///	return json;
-	///} else {
-	///	throw new Error(text);
-	///}
-	///}
-	///
-	///function handleClick() {
-	///	promise = ShraniVBazo();
-	///}
-
-
-	/// DELA tudi, ločena od zgornje
-	//async function ShraniVBazo() {
-    //    //const res = await fetch("http://127.0.0.1:8000/Filmi")
-	//	const res = await fetch("http://127.0.0.1:8000/Filmi/Pridobi/64451c725d451970bc2da2c9")
-	//	const json = await res.json()
-    //
-	//	if (res.ok) {
-	//		return json.Naslov;
-	//	} else {
-	//		throw new Error(text);
-	//	}
-	//	//console.log(json)
-	//	//result= JSON.parse(json)
-	//	//result = JSON.stringify(json)
-	//}
-
+	import Card from '$lib/Card.svelte';
 	
+
+	let naslov = 'Zdravo';
+	let ID = 0;
+	let ogledan = 'true';
+	let result = null;
+	let json = null;
+
 
 	// Za page.js pusti pri miru. Prihaja iz load function
 	export let data;
-	console.log(data.json)
+
+	async function updateCard(event) {
+		let id = event.detail.id;
+		let ogledan = event.detail.ogledan;
+		console.log(event.detail)
+		let povezava = 'http://127.0.0.1:8000/Film/Status/' + id + '/' + ogledan;
+		const res = await fetch(povezava, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8'
+			}
+		})
+		const getResponse = await fetch('http://127.0.0.1:8000/Filmi');
+    	json = await getResponse.json();
+		data.json = json;
+	}
+
+	async function deleteCard(event) {
+		let id = event.detail.id;
+		console.log(event.detail)
 	
+		let povezava = "http://127.0.0.1:8000/Film/" + id
+        const res = await fetch(povezava, {
+			method: 'DELETE',
+		})
+	
+
+		const getResponse = await fetch('http://127.0.0.1:8000/Filmi');
+    	json = await getResponse.json();
+		data.json = json;
+	}
 </script>
 
+[
+<h1 class="p-5 text-center font-sans text-5xl">Pregled vseh datotek</h1>
 
-<h1 class="text-5xl text-center p-5 font-sans">
-    Pregled vseh datotek
-</h1>
-
-<p class="text-xl text-center font-bold text-blue-400 m-4">Tukaj se nahaja vaša zbirka filmov in serij</p>
+<p class="m-4 text-center text-xl font-bold text-blue-400">
+	Tukaj se nahaja vaša zbirka filmov in serij
+</p>
 
 <!--
 	<button on:click={handleClick}>
@@ -76,41 +66,14 @@
 	<p style="color: red">{error.message}</p>
 {/await}
 
-<p> ID: {JSON.stringify(item._id)}, Naslov: , Trajanje: {item.trajanje} minut</p>
-
-
-
-
-{#each data.json as item (item._id) }
-	<Card>
-			<p> ID: {JSON.stringify(item._id)}</p>
-			<p>Naslov filma: {item.Naslov}</p>
-			<p>Trajanje filma: {item.Trajanje} minut</p>
-			<p>Leto izvajanja: {item.Leto}</p>
-			<p>Reziser: {item.Reziser}</p>
-			<p>Ocena: {item.Ocena}</p>
-			<p>Ogledan: {item.Ogledan}</p>	
-			<img height = "400" width="400" src={item.Image} alt="Fotografija"/>
-	</Card>
-{/each}
-
 
 -->
 
 <!--Spraed operator-->
-<div class="p-10 ml-10 flex flex-wrap gap-6 ">
-	{#each data.json as item (item._id) }
-		<Card {...item}>
-		</Card>
+<div class="ml-10 flex flex-wrap gap-7 p-10">
+	{#each data.json as item (item._id)}
+		<Card on:sprememba={updateCard} on:izbris={deleteCard} {...item} />
 	{/each}
 </div>
 
-
-
-
-
-
-
-
-
-
+]

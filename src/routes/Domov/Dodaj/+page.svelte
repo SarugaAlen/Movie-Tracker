@@ -93,6 +93,4 @@
 </form>
 
 
-<p>{result}</p>
-
 
