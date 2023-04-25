@@ -35,7 +35,7 @@
 
 
 <div class="max-w-sm rounded-xl overflow-hidden shadow-lg">
-    <img class="max-h-64" src={Image} alt="Sunset in the mountains">
+    <img class="max-h-64 max-w-xs" src={Image} alt="Sunset in the mountains">
     <div class="px-6 py-6">
       <p class="font-bold text-2xl mb-2 {Ogledan == true ? "text-green-600" : "text-red-400"} ">{Naslov}</p>
       <p class="text-gray-700">Trajanje filma: {Trajanje} minut</p>

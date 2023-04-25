@@ -55,9 +55,11 @@
 </script>
 
 
-<h1 class=" m-5 text-center text-4xl">
+<h1 class="text-5xl text-center p-5 font-sans">
     Pregled vseh datotek
 </h1>
+
+<p class="text-xl text-center font-bold text-blue-400 m-4">Tukaj se nahaja vaša zbirka filmov in serij</p>
 
 <!--
 	<button on:click={handleClick}>
@@ -96,7 +98,7 @@
 -->
 
 <!--Spraed operator-->
-<div class="p-10 flex flex-wrap gap-6">
+<div class="p-10 ml-10 flex flex-wrap gap-6 ">
 	{#each data.json as item (item._id) }
 		<Card {...item}>
 		</Card>
