@@ -44,7 +44,7 @@
 	}
 </script>
 
-[
+
 <h1 class="p-5 text-center font-sans text-5xl">Pregled vseh datotek</h1>
 
 <p class="m-4 text-center text-xl font-bold text-blue-400">
@@ -76,4 +76,3 @@
 	{/each}
 </div>
 
-]
