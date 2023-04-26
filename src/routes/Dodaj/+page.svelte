@@ -37,21 +37,9 @@
 <p class="text-xl text-center font-bold text-blue-400 m-4">Tukaj lahko dodajate filme</p>
 
 
-<!--
-<p>Ime filma: {naslov}</p>
-<p>Trajanje filma: {trajanje}</p>
-
-{#if ogledan == false}
-    <p>Film ni bil ogledan</p>
-{:else}
-    <p>Film je bil ogledan</p>
-{/if}
--->
-
-
 <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
-	<div class="flex flex-col">
-		<div class="flex flex-wrap justify-evenly">
+	<div class="flex flex-row  gap-10 justify-center">
+		<div class="flex flex-col flex-wrap justify-evenly">
 			<div class= "mt-4">
 				<label class="block text-gray-600 font-bold mb-2" for="Naslov">Vnesi naslov filma:</label>
 				<input class="shadow appearance-none border rounded-md w-auto text-gray-800" placeholder="Naslov" name="Naslov" type="text" bind:value={naslov} />
@@ -71,7 +59,7 @@
 			</div>
 		</div>
 
-		<div class=" mb-7 flex flex-wrap justify-evenly">
+		<div class=" mb-7 flex flex-col flex-wrap justify-evenly">
 			<div class="mt-4">
 				<label class="block text-gray-600 font-bold mb-2" for="Ocena">Vnesi oceno filma:</label>
 				<input class="shadow appearance-none border rounded-md w-auto text-gray-800" name="Ocena" type="number" bind:value={ocena} />

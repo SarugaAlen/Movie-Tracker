@@ -2,53 +2,21 @@
   import "../app.css";
 </script>
 
-<nav>
-    <ul>
-        <li>
-            <a href="/Domov">Domov</a>
+<nav class="p-5 bg-blue-500">
+    <ul class="flex">
+        <li class="mr-6 font-bold text-white">
+            <a href="/">Domov</a>
         </li>
-        <li>
-            <a href="/Domov/Dodaj">Dodaj</a>
+        <li class="mr-6 font-bold text-white">
+            <a href="/Dodaj">Dodaj</a>
         </li>
-        <li>
-            <a href="/Domov/Odstrani">Odstrani</a>
-        </li>
-        <li>
-            <a href="/Domov/PregledVse">Pregled</a>
+        <li class="mr-6 font-bold text-white">
+            <a href="/PregledVse">Pregled</a>
         </li>
     </ul>
-    
 </nav>
 
 <!--Tu mora biti tu, da se "slot" zamenja z dejanskim contentom-->
 <slot></slot>
 
 
-<style>
-    nav {
-  background-color: #333;
-  color: #fff;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-}
-
-nav li {
-  margin: 0;
-}
-
-nav a {
-  display: block;
-  padding: 1em;
-  color: #fff;
-  text-decoration: none;
-}
-
-nav a:hover {
-  background-color: #555;
-}
-</style>
