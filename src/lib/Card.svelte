@@ -58,7 +58,7 @@
 			<button
 				on:click={izbrisiCard}
 				class=" text-md font-bold underline text-red-400 hover:text-red-700"
-				>Izbrisi</button
+				>Izbriši</button
 			>
 		</div>
 	</div>

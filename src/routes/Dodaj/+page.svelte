@@ -32,13 +32,13 @@
 </script>
 
 <h1 class="text-5xl text-center p-5 font-sans">
-    Dodaj datoteko
+    Dodaj film
 </h1>
 <p class="text-xl text-center font-bold text-blue-400 m-4">Tukaj lahko dodajate filme</p>
 
 
 <form class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
-	<div class="flex flex-row  gap-10 justify-center">
+	<div class="flex flex-wrap flex-row gap-10 justify-center">
 		<div class="flex flex-col flex-wrap justify-evenly">
 			<div class= "mt-4">
 				<label class="block text-gray-600 font-bold mb-2" for="Naslov">Vnesi naslov filma:</label>
@@ -70,14 +70,15 @@
 				<input class="shadow appearance-none border rounded-md w-auto text-gray-800" placeholder="URL fotografije" name="Image" type="text" bind:value={img_url} />
 			</div>
 		
-			<div class="mt-4 flex items-center">
+			<div class="mt-4 flex items-center justify-center">
 				<label class="ml-2 block font-bold text-xl text-gray-600" for="Ogledan">Ogledan</label>
 				<input class=" m-7 w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" name="Ogledan" type="checkbox" bind:checked={ogledan} />
 			</div>
-		</div>
-			<button on:click|preventDefault={ShraniVBazo} class= "self-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded max-w-lg">Shrani v bazo!</button>
+		</div>	
  	</div>
-	
+	 	<div class="flex flex-col mt-8">
+			<button on:click|preventDefault={ShraniVBazo} class= "self-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded max-w-lg">Shrani v bazo!</button>
+		</div>
 </form>
 
 
